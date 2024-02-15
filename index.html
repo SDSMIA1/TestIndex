@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Warehouse Inventory Management</h1>
+
+    <form id="inventoryForm">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" name="itemName" required>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required>
+
+        <button type="button" onclick="addItem()">Add Item</button>
+    </form>
+
+    <table id="inventoryTable">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="inventoryBody"></tbody>
+    </table>
+
+    <script>
+
+	var serverIp = 105.210.172.212
+	
+        function addItem() {
+            var itemName = document.getElementById("itemName").value;
+            var quantity = document.getElementById("quantity").value;
+
+            var tableBody = document.getElementById("inventoryBody");
+            var newRow = tableBody.insertRow(tableBody.rows.length);
+
+            var cell1 = newRow.insertCell(0);
+            cell1.textContent = itemName;
+
+            var cell2 = newRow.insertCell(1);
+            cell2.textContent = quantity;
+
+            // Clear form fields
+            document.getElementById("itemName").value = "";
+            document.getElementById("quantity").value = "";
+        }
+    </script>
+</body>
+</html>
